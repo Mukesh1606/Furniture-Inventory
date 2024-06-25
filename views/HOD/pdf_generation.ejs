@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Approved Records</h1>
+            <button onclick="generate_pdf()" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                    class="fas fa-download fa-sm text-white-50"></i> Generate Report</button>
+        </div>
+        <div class="card shadow mb-4" id="pdf">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Invoice</th>
+                                <th>Product Name</th>
+                                <th>Description</th>
+                                <th>Company Name</th>
+                                <th>Date of Purchase</th>
+                                <th>Quantity</th>
+                                <th>Rate</th>
+                                <th>Tax</th>
+                                <th>Total Cost</th>
+                                <th>Warranty</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%if (records != "") {%>
+                                <% records.forEach(function(record, index){ %>
+                                    <tr>
+                                        <td><%= record.inVoice%></td>
+                                        <td><%= record.productName%></td>
+                                        <td><%= record.description%></td>
+                                        <td><%= record.company%></td>
+                                        <td><%= record.dop%></td>
+                                        <td><%= record.quantity%></td>
+                                        <td>&#x20B9; <%= record.rate%></td>
+                                        <td><%= record.percentage%></td>
+                                        <td>&#x20B9; <%= record.cost%></td>
+                                        <td><%= record.warranty%></td>
+                                    </tr>
+                                <%})%>
+                            <%}%>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
